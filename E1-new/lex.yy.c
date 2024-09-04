@@ -384,25 +384,25 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[9] =
     {   0,
-        0,    0,    5,    3,    2,    1,    1,    0
+        0,    0,    5,    1,    3,    2,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
+        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
+        2,    2,    2,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        1,    1,    1,    1,    1,    1,    3,    3,    3,    3,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -421,17 +421,17 @@ static const YY_CHAR yy_ec[256] =
 
 static const YY_CHAR yy_meta[4] =
     {   0,
-        1,    1,    2
+        1,    2,    2
     } ;
 
 static const flex_int16_t yy_base[10] =
     {   0,
-        0,    0,    5,    6,    6,    0,    0,    6,    2
+        0,    0,    5,    0,    6,    6,    0,    6,    3
     } ;
 
 static const flex_int16_t yy_def[10] =
     {   0,
-        8,    1,    8,    8,    8,    9,    9,    0,    8
+        8,    1,    8,    9,    8,    8,    9,    0,    8
     } ;
 
 static const flex_int16_t yy_nxt[10] =
@@ -463,15 +463,18 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "mywc.l"
+#line 1 "mywc-linux.l"
 /* just like Unix wc */
-#line 6 "mywc.l"
+#line 5 "mywc-linux.l"
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
 int chars = 0;
 int words = 0;
 int lines = 0;
-#line 474 "lex.yy.c"
-#line 475 "lex.yy.c"
+#line 477 "lex.yy.c"
+#line 478 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -688,10 +691,10 @@ YY_DECL
 		}
 
 	{
-#line 12 "mywc.l"
+#line 14 "mywc-linux.l"
 
 
-#line 695 "lex.yy.c"
+#line 698 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -760,26 +763,26 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "mywc.l"
+#line 16 "mywc-linux.l"
 { words++; chars+=strlen(yytext); }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 15 "mywc.l"
+#line 17 "mywc-linux.l"
 { chars++; lines++; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "mywc.l"
+#line 18 "mywc-linux.l"
 { chars++; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "mywc.l"
+#line 20 "mywc-linux.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 783 "lex.yy.c"
+#line 786 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1796,11 +1799,28 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 18 "mywc.l"
+#line 20 "mywc-linux.l"
 
 
 int main(int argc, char **argv)
 {
-  yylex();
-  printf("%8d%8d%8d\n", lines, words, chars);
+    if (argc > 1) {
+        FILE *file = fopen(argv[1], "r");
+        if (!file) {
+            perror("Error opening file");
+            exit(1);
+        }
+        yyin = file;  
+    }
+
+    yylex();  // Run the lexer
+
+    printf("%8d%8d%8d\n", lines, words, chars);
+
+    if (yyin != stdin) {
+        fclose(yyin);
+    }
+
+    return 0;
 }
+
